@@ -3,9 +3,9 @@ import { darkTheme, lightTheme } from "../constants/theme";
 import { THEME_CONTEXT, THEME_TYPE } from "../types/theme";
 
 export const useThemeToggle = () => {
-  const [theme, setTheme] = useState<THEME_TYPE>(THEME_TYPE.light);
+  const [theme, setTheme] = useState<THEME_TYPE>(THEME_TYPE.dark);
   const [themeConfig, setThemeConfig] =
-    useState<THEME_CONTEXT["themeConfig"]>(lightTheme);
+    useState<THEME_CONTEXT["themeConfig"]>(darkTheme);
 
   const toggle = () => {
     theme === THEME_TYPE.light

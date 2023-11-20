@@ -2,6 +2,10 @@ import "./App.css";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Home } from "./pages/home";
 import { useThemeChooser } from "./contexts/theme-chooser";
+import { Header } from "./layouts/header";
+import { Content } from "./layouts/content";
+import { Footer } from "./layouts/footer";
+import { CityChooserProvider } from "./contexts/citiy-chooser";
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -17,7 +21,13 @@ function App() {
   return (
     <ThemeProvider theme={themeConfig}>
       <GlobalStyles />
-      <Home />
+      <CityChooserProvider>
+        <Header />
+        <Content>
+          <Home />
+        </Content>
+        <Footer />
+      </CityChooserProvider>
     </ThemeProvider>
   );
 }
