@@ -5,10 +5,6 @@ import { routePaths } from "../constants/paths";
 
 const FullWidth = styled.div`
   height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 const SwitchForecast = styled.div`

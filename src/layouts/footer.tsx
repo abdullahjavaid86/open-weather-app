@@ -24,6 +24,10 @@ const StyledWeatherButton = styled.button`
   padding: 1rem;
   color: ${({ theme }) => theme.text};
   margin: 0.2rem;
+  width: 16%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   &:hover,
   &.active {
     cursor: pointer;

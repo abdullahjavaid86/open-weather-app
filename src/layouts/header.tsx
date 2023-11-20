@@ -7,6 +7,9 @@ export const StyledHeaderDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   font-weight: 700;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
   .settings {
     list-style: none;
     display: flex;

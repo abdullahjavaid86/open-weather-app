@@ -47,41 +47,39 @@ export const Home = () => {
   }
 
   return (
-    <div>
-      <div>
-        <div>{data?.data.name}</div>
-        <StyledWeatherDataDiv>
-          <div style={{ display: "grid", textAlign: "center" }}>
-            {data?.data?.weather?.map((item) => (
-              <img src={getWeatherIconUrl(item.icon)} alt={item.description} />
-            ))}
-            {data?.data?.weather?.[0]?.main}
-          </div>
-          <div>
-            <p>
-              <span>Temp: </span> {data?.data?.main?.temp}
-            </p>
-            <p>
-              <span>Feels like: </span> {data?.data?.main?.feels_like}
-            </p>
-            <p>
-              <span>Humidity: </span> {data?.data?.main?.humidity}
-            </p>
-            <p>
-              <span>Sunrise: </span>
-              {data?.data?.sys?.sunrise
-                ? convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunrise)
-                : "N/A"}
-            </p>
-            <p>
-              <span>Sunset: </span>
-              {data?.data?.sys?.sunset
-                ? convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunset)
-                : "N/A"}
-            </p>
-          </div>
-        </StyledWeatherDataDiv>
-      </div>
+    <div style={{ textAlign: "center" }}>
+      <div>{data?.data.name}</div>
+      <StyledWeatherDataDiv>
+        <div style={{ display: "grid", textAlign: "center" }}>
+          {data?.data?.weather?.map((item) => (
+            <img src={getWeatherIconUrl(item.icon)} alt={item.description} />
+          ))}
+          {data?.data?.weather?.[0]?.main}
+        </div>
+        <div>
+          <p>
+            <span>Temp: </span> {data?.data?.main?.temp}
+          </p>
+          <p>
+            <span>Feels like: </span> {data?.data?.main?.feels_like}
+          </p>
+          <p>
+            <span>Humidity: </span> {data?.data?.main?.humidity}
+          </p>
+          <p>
+            <span>Sunrise: </span>
+            {data?.data?.sys?.sunrise
+              ? convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunrise)
+              : "N/A"}
+          </p>
+          <p>
+            <span>Sunset: </span>
+            {data?.data?.sys?.sunset
+              ? convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunset)
+              : "N/A"}
+          </p>
+        </div>
+      </StyledWeatherDataDiv>
     </div>
   );
 };
