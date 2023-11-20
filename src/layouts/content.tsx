@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { routePaths } from "../constants/paths";
+import { Settings } from "../components/settings";
 
 const FullWidth = styled.div`
   height: 60vh;
@@ -47,6 +48,7 @@ export const Content = ({ children }: { children: ReactNode }) => {
           5 Days
         </Link>
       </SwitchForecast>
+      <Settings />
     </FullWidth>
   );
 };

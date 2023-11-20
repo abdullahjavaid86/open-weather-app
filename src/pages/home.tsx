@@ -3,6 +3,7 @@ import { useCurrentWeather } from "../hooks/useCurrentWeather";
 import { useCityStore } from "../store/city";
 import { convertNumberTimeStampInHoursAndMinutes } from "../utils/time";
 import { getWeatherIconUrl } from "../utils/weather";
+import { useTemperatureUnit } from "../hooks/useTemperatureUnit";
 
 const StyledWeatherDataDiv = styled.div`
   display: flex;
@@ -17,6 +18,7 @@ const StyledWeatherDataDiv = styled.div`
 
 export const Home = () => {
   const city = useCityStore((state) => state.currentCity);
+  const temperatureUnit = useTemperatureUnit();
 
   const { status, error, data, isLoading } = useCurrentWeather();
 
@@ -52,19 +54,26 @@ export const Home = () => {
       <StyledWeatherDataDiv>
         <div style={{ display: "grid", textAlign: "center" }}>
           {data?.data?.weather?.map((item) => (
-            <img src={getWeatherIconUrl(item.icon)} alt={item.description} />
+            <img
+              src={getWeatherIconUrl(item.icon)}
+              alt={item.description}
+              key={item.id}
+            />
           ))}
           {data?.data?.weather?.[0]?.main}
         </div>
         <div>
           <p>
             <span>Temp: </span> {data?.data?.main?.temp}
+            {temperatureUnit}
           </p>
           <p>
             <span>Feels like: </span> {data?.data?.main?.feels_like}
+            {temperatureUnit}
           </p>
           <p>
             <span>Humidity: </span> {data?.data?.main?.humidity}
+            {temperatureUnit}
           </p>
           <p>
             <span>Sunrise: </span>

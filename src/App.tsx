@@ -1,5 +1,5 @@
 import "./App.css";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Home } from "./pages/home";
 import { useThemeChooser } from "./contexts/theme-chooser";
 import { Header } from "./layouts/header";
@@ -8,6 +8,8 @@ import { Route, Routes } from "react-router-dom";
 import { routePaths } from "./constants/paths";
 import { FiveDay } from "./pages/5day";
 import { Content } from "./layouts/content";
+import { BaseModalBackground, ModalProvider } from "styled-react-modal";
+import { SettingModalContextProvider } from "./contexts/setting-context";
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -18,19 +20,28 @@ export const GlobalStyles = createGlobalStyle`
   }
   `;
 
+const FadingBackground = styled(BaseModalBackground)`
+  opacity: ${(props) => props.opacity};
+  transition: all 0.3s ease-in-out;
+`;
+
 function App() {
   const { themeConfig } = useThemeChooser();
   return (
     <ThemeProvider theme={themeConfig}>
-      <GlobalStyles />
-      <Header />
-      <Content>
-        <Routes>
-          <Route path={routePaths.Home} element={<Home />} />
-          <Route path={routePaths.FiveDay} element={<FiveDay />} />
-        </Routes>
-      </Content>
-      <Footer />
+      <SettingModalContextProvider>
+        <ModalProvider backgroundComponent={FadingBackground}>
+          <GlobalStyles />
+          <Header />
+          <Content>
+            <Routes>
+              <Route path={routePaths.Home} element={<Home />} />
+              <Route path={routePaths.FiveDay} element={<FiveDay />} />
+            </Routes>
+          </Content>
+          <Footer />
+        </ModalProvider>
+      </SettingModalContextProvider>
     </ThemeProvider>
   );
 }

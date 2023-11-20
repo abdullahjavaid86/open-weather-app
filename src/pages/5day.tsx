@@ -1,12 +1,14 @@
 import { useFiveDaysForecast } from "../hooks/useFiveDaysForecast";
+import { useTemperatureUnit } from "../hooks/useTemperatureUnit";
 import { useCityStore } from "../store/city";
-import { getDayFromTimeStamp, getShortDayFromTimeStamp } from "../utils/time";
+import { getShortDayFromTimeStamp } from "../utils/time";
 import { getWeatherIconUrl } from "../utils/weather";
 
 export const FiveDay = () => {
   const city = useCityStore((state) => state.currentCity);
+  const temperatureUnit = useTemperatureUnit();
+
   const { status, error, data, isLoading } = useFiveDaysForecast();
-  console.log(data);
 
   if (!city) {
     <div>
@@ -59,7 +61,7 @@ export const FiveDay = () => {
         >
           {data?.data?.list?.map((item) => {
             return (
-              <div>
+              <div key={item.dt_txt}>
                 <div>{getShortDayFromTimeStamp(item.dt_txt)}</div>
                 <div>
                   <img
@@ -70,7 +72,9 @@ export const FiveDay = () => {
                 <div>
                   <p>{item.weather[0].main}</p>
                   <div>
-                    H: {item.main.temp_max} / L: {item.main.temp_min}
+                    H: {item.main.temp_max}
+                    {temperatureUnit} / L: {item.main.temp_min}
+                    {temperatureUnit}
                   </div>
                 </div>
               </div>

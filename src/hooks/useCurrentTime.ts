@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import { useSettingsStore } from "../store/settings";
 
 export const userCurrentTime = () => {
+  const timeUnit = useSettingsStore((state) => state.time);
+
   const [time, setTime] = useState(
     new Date().toLocaleString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
-      hour12: false,
+      hour12: timeUnit === "12h",
     })
   );
 
@@ -15,7 +18,7 @@ export const userCurrentTime = () => {
         new Date().toLocaleString("en-US", {
           hour: "2-digit",
           minute: "2-digit",
-          hour12: false,
+          hour12: timeUnit === "12h",
         })
       );
     }, 1000);

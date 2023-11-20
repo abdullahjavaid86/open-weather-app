@@ -655,7 +655,7 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.5.tgz#deed5ab7019756c9c90ea86139106b0346223f35"
   integrity sha512-+d+WYC1BxJ6yVOgUgzK8gWvp5qF8ssV5r4nsDcZWKRWcDQLQ619tvWAxJQYGgBrO1MnLJC7a5GtiYsAoQ47dJg==
 
-"@types/styled-components@^5.1.30":
+"@types/styled-components@*", "@types/styled-components@^5.1.30":
   version "5.1.30"
   resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.30.tgz#7f2b2c01245e3274083091517c7205c9ce9dd420"
   integrity sha512-xxJqw0s1myRTgrzHgG5tKHS9hK+KNhjbKMXDWlHRo9eDNVVUqf147QUGYUqwyCDkFyGr2pi1qJKFMEy0ACZb0A==
@@ -663,6 +663,14 @@
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
     csstype "^3.0.2"
+
+"@types/styled-react-modal@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@types/styled-react-modal/-/styled-react-modal-1.2.5.tgz#4fb88403912a1ebdaa71327e24b544304c831039"
+  integrity sha512-Uzrn62S7FP7gkOF4HlYUT3RXJpOcSUnZQRMw9RQUyd5qoVGdBj81UMqZrI1q3x1fhV7J7XQY2jQaVS1Mp2VzIA==
+  dependencies:
+    "@types/react" "*"
+    "@types/styled-components" "*"
 
 "@types/stylis@^4.0.2":
   version "4.2.3"
@@ -3414,6 +3422,13 @@ styled-components@^6.1.1:
     shallowequal "^1.1.0"
     stylis "^4.3.0"
     tslib "^2.5.0"
+
+styled-react-modal@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/styled-react-modal/-/styled-react-modal-3.0.1.tgz#f58957b74b7e0c2f7a1bf19b90cd8fc77a0943c7"
+  integrity sha512-3Wg/pyeGR5edhr15OqD8gq8ZFt+kceyTfe0smXxRf5vyonYCsGfSB0mJG4g8lPFrxQzM3F7CP9VAUkuYR+ybQw==
+  dependencies:
+    prop-types "^15.8.1"
 
 stylis@^4.3.0:
   version "4.3.0"
