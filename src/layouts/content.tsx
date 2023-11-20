@@ -7,6 +7,7 @@ const FullWidth = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 export const Content = ({ children }: { children: ReactNode }) => {
   return <FullWidth>{children}</FullWidth>;
 };

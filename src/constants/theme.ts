@@ -5,6 +5,16 @@ export const lightTheme = {
   text: colors.black,
   toggleBorder: colors.white,
   background: colors.white,
+  btnBackgroundColor: colors.black,
+  btnTextColor: colors.white,
+  colors: {
+    black: "#000",
+    white: "#fff",
+    purple: `#BF5AF2`,
+    yellow: `#FFD60A`,
+    blue: `#0A84FF`,
+    cyan: `#64D2FF`,
+  },
 };
 
 export const darkTheme = {
@@ -12,4 +22,14 @@ export const darkTheme = {
   text: colors.white,
   toggleBorder: colors.black,
   background: colors.black,
+  btnBackgroundColor: colors.white,
+  btnTextColor: colors.black,
+  colors: {
+    black: "#000",
+    white: "#fff",
+    purple: `#BF5AF2`,
+    yellow: `#FFD60A`,
+    blue: `#0A84FF`,
+    cyan: `#64D2FF`,
+  },
 };

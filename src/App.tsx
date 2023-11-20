@@ -5,7 +5,6 @@ import { useThemeChooser } from "./contexts/theme-chooser";
 import { Header } from "./layouts/header";
 import { Content } from "./layouts/content";
 import { Footer } from "./layouts/footer";
-import { CityChooserProvider } from "./contexts/citiy-chooser";
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -21,13 +20,11 @@ function App() {
   return (
     <ThemeProvider theme={themeConfig}>
       <GlobalStyles />
-      <CityChooserProvider>
-        <Header />
-        <Content>
-          <Home />
-        </Content>
-        <Footer />
-      </CityChooserProvider>
+      <Header />
+      <Content>
+        <Home />
+      </Content>
+      <Footer />
     </ThemeProvider>
   );
 }
