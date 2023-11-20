@@ -3,8 +3,11 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Home } from "./pages/home";
 import { useThemeChooser } from "./contexts/theme-chooser";
 import { Header } from "./layouts/header";
-import { Content } from "./layouts/content";
 import { Footer } from "./layouts/footer";
+import { Route, Routes } from "react-router-dom";
+import { routePaths } from "./constants/paths";
+import { FiveDay } from "./pages/5day";
+import { Content } from "./layouts/content";
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -22,7 +25,10 @@ function App() {
       <GlobalStyles />
       <Header />
       <Content>
-        <Home />
+        <Routes>
+          <Route path={routePaths.Home} element={<Home />} />
+          <Route path={routePaths.FiveDay} element={<FiveDay />} />
+        </Routes>
       </Content>
       <Footer />
     </ThemeProvider>

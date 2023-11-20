@@ -2,12 +2,14 @@ import styled from "styled-components";
 import { TCity } from "../constants/cities";
 import { getRandomCities } from "../utils/get-random-cities";
 import { useCityStore } from "../store/city";
+import { useMemo } from "react";
 
 export const Footer = () => {
+  const cities = useMemo(() => getRandomCities(), []);
   return (
     <footer>
       <div>
-        {getRandomCities().map((item) => (
+        {cities.map((item) => (
           <CityChooseButton key={item.id} city={item} />
         ))}
       </div>

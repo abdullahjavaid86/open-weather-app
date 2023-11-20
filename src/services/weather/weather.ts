@@ -8,7 +8,7 @@ export const getCurrentWeather = (
   lng: number,
   units: Unit = "standard"
 ) =>
-  weatherApiInstance.get<{ data: CurrentWeatherResponse }>("/weather", {
+  weatherApiInstance.get<CurrentWeatherResponse>("/weather", {
     params: {
       lat,
       lon: lng,
@@ -21,7 +21,7 @@ export const getFiveDayForecast = (
   lng: number,
   units: Unit = "standard"
 ) =>
-  weatherApiInstance.get<{ data: ThreeHourResponse }>("/forecast", {
+  weatherApiInstance.get<ThreeHourResponse>("/forecast", {
     params: {
       lat,
       lon: lng,

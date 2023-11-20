@@ -7,19 +7,9 @@ export const useCurrentWeather = () => {
   const city = useCityStore((state) => state.currentCity);
   const unit = useSettingsStore((state) => state.unit);
 
-  if (!city) {
-    return {
-      isLoading: false,
-      status: "error",
-      error: {
-        message: "Pick a city to see full forecast",
-      },
-      data: undefined,
-    };
-  }
-
-  const { isLoading, status, error, data } = useQuery("current-weather", () =>
-    getCurrentWeather(city.coord.lat, city.coord.lon, unit)
+  const { isLoading, status, error, data } = useQuery(
+    ["current-weather", city?.id],
+    () => getCurrentWeather(city!.coord.lat, city!.coord.lon, unit)
   );
 
   return {
