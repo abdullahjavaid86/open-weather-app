@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 
+import { ThemeChooser } from '../components/icons/theme-choose';
 import { cities } from '../constants/cities';
 import styled from 'styled-components';
 import { useCityStore } from '../store/city';
@@ -19,6 +20,7 @@ const StyledHeaderDiv = styled.div`
     list-style: none;
     display: flex;
     gap: 1rem;
+    align-items: center;
   }
 `;
 
@@ -77,10 +79,8 @@ export const Header = () => {
                 settings
               </SimpleButton>
             </li>
-            <li>
-              <button type="button" onClick={toggle}>
-                Toggle Dark Mode
-              </button>
+            <li onClick={toggle}>
+              <ThemeChooser />
             </li>
           </ul>
         </div>
