@@ -1,4 +1,4 @@
-import { colors } from "./colors";
+import { colors } from './colors';
 
 export const lightTheme = {
   body: colors.white,
@@ -8,8 +8,8 @@ export const lightTheme = {
   btnBackgroundColor: colors.black,
   btnTextColor: colors.white,
   colors: {
-    black: "#000",
-    white: "#fff",
+    black: '#000',
+    white: '#fff',
     purple: `#BF5AF2`,
     yellow: `#FFD60A`,
     blue: `#0A84FF`,
@@ -25,8 +25,8 @@ export const darkTheme = {
   btnBackgroundColor: colors.white,
   btnTextColor: colors.black,
   colors: {
-    black: "#000",
-    white: "#fff",
+    black: '#000',
+    white: '#fff',
     purple: `#BF5AF2`,
     yellow: `#FFD60A`,
     blue: `#0A84FF`,

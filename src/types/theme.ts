@@ -1,8 +1,8 @@
-import { darkTheme, lightTheme } from "../constants/theme";
+import { darkTheme, lightTheme } from '../constants/theme';
 
 export enum THEME_TYPE {
-  light = "light",
-  dark = "dark",
+  light = 'light',
+  dark = 'dark',
 }
 
 export type THEME_CONTEXT = {

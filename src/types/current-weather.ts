@@ -1,17 +1,10 @@
 // 20200516233806
 // https://openweathermap.org/data/2.5/weather?q=London,uk&appid=439d4b804bc8187953eb36d2a8c26a02
 
-import { CountryCode } from "./country-codes";
-import { Coordinate } from "./units";
-import {
-  Base,
-  Clouds,
-  Main,
-  Precipitation,
-  Weather,
-  Wind,
-  Time,
-} from "./weather";
+import { Base, Clouds, Main, Precipitation, Time, Weather, Wind } from './weather';
+
+import { Coordinate } from './units';
+import { CountryCode } from './country-codes';
 
 export interface CurrentWeatherSys {
   type?: number; // Internal parameter

@@ -1,4 +1,4 @@
-import { TCity } from "../constants/cities";
+import { TCity } from '../constants/cities';
 
 export type CITY_CONTEXT = {
   currentCity: TCity | null;

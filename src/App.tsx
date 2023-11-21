@@ -1,15 +1,17 @@
-import "./App.css";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
-import { Home } from "./pages/home";
-import { useThemeChooser } from "./contexts/theme-chooser";
-import { Header } from "./layouts/header";
-import { Footer } from "./layouts/footer";
-import { Route, Routes } from "react-router-dom";
-import { routePaths } from "./constants/paths";
-import { FiveDay } from "./pages/5day";
-import { Content } from "./layouts/content";
-import { BaseModalBackground, ModalProvider } from "styled-react-modal";
-import { SettingModalContextProvider } from "./contexts/setting-context";
+import './App.css';
+
+import { BaseModalBackground, ModalProvider } from 'styled-react-modal';
+import { Route, Routes } from 'react-router-dom';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+
+import { Content } from './layouts/content';
+import { FiveDay } from './pages/5day';
+import { Footer } from './layouts/footer';
+import { Header } from './layouts/header';
+import { Home } from './pages/home';
+import { SettingModalContextProvider } from './contexts/setting-context';
+import { routePaths } from './constants/paths';
+import { useThemeChooser } from './contexts/theme-chooser';
 
 export const GlobalStyles = createGlobalStyle`
   body {

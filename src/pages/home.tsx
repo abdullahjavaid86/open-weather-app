@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { useCurrentWeather } from "../hooks/useCurrentWeather";
-import { useCityStore } from "../store/city";
-import { convertNumberTimeStampInHoursAndMinutes } from "../utils/time";
-import { getWeatherIconUrl } from "../utils/weather";
-import { useTemperatureUnit } from "../hooks/useTemperatureUnit";
+import { convertNumberTimeStampInHoursAndMinutes } from '../utils/time';
+import { getWeatherIconUrl } from '../utils/weather';
+import styled from 'styled-components';
+import { useCityStore } from '../store/city';
+import { useCurrentWeather } from '../hooks/useCurrentWeather';
+import { useTemperatureUnit } from '../hooks/useTemperatureUnit';
 
 const StyledWeatherDataDiv = styled.div`
   display: flex;
@@ -23,44 +23,46 @@ export const Home = () => {
   const { status, error, data, isLoading } = useCurrentWeather();
 
   if (!city) {
-    <div>
-      <div>Pick a city to see current weather</div>
-    </div>;
+    return (
+      <StyledWeatherDataDiv>
+        <div>Pick a city to see current weather</div>
+      </StyledWeatherDataDiv>
+    );
   }
 
   if (isLoading) {
-    <div>
-      <div>Loading...</div>
-    </div>;
+    return (
+      <StyledWeatherDataDiv>
+        <div>Loading...</div>
+      </StyledWeatherDataDiv>
+    );
   }
 
-  if (status === "error") {
+  if (status === 'error') {
     return (
-      <div>
+      <StyledWeatherDataDiv>
         <div>{(error as { message: string }).message}</div>
-      </div>
+      </StyledWeatherDataDiv>
     );
   }
 
   if (!data?.data) {
-    <div>
-      <div>Please select another city</div>
-    </div>;
+    return (
+      <StyledWeatherDataDiv>
+        <div>Please select another city</div>
+      </StyledWeatherDataDiv>
+    );
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: 'center' }}>
       <div>{data?.data.name}</div>
       <StyledWeatherDataDiv>
-        <div style={{ display: "grid", textAlign: "center" }}>
+        <div style={{ display: 'grid', textAlign: 'center' }}>
           {data?.data?.weather?.map((item) => (
-            <img
-              src={getWeatherIconUrl(item.icon)}
-              alt={item.description}
-              key={item.id}
-            />
+            <img src={getWeatherIconUrl(item.icon)} alt={item.description} key={item.id} />
           ))}
-          {data?.data?.weather?.[0]?.main}
+          {data.data.weather[0].main}
         </div>
         <div>
           <p>
@@ -68,24 +70,20 @@ export const Home = () => {
             {temperatureUnit}
           </p>
           <p>
-            <span>Feels like: </span> {data?.data?.main?.feels_like}
+            <span>Feels like: </span> {data.data.main.feels_like}
             {temperatureUnit}
           </p>
           <p>
-            <span>Humidity: </span> {data?.data?.main?.humidity}
+            <span>Humidity: </span> {data.data.main.humidity}
             {temperatureUnit}
           </p>
           <p>
             <span>Sunrise: </span>
-            {data?.data?.sys?.sunrise
-              ? convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunrise)
-              : "N/A"}
+            {convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunrise) ?? 'N/A'}
           </p>
           <p>
             <span>Sunset: </span>
-            {data?.data?.sys?.sunset
-              ? convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunset)
-              : "N/A"}
+            {convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunset) ?? 'N/A'}
           </p>
         </div>
       </StyledWeatherDataDiv>

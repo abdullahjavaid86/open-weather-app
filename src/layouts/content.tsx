@@ -1,8 +1,10 @@
-import type { ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
-import { routePaths } from "../constants/paths";
-import { Settings } from "../components/settings";
+import { Link, useLocation } from 'react-router-dom';
+
+import type { ReactNode } from 'react';
+import { Settings } from '../components/settings';
+import { routePaths } from '../constants/paths';
+import styled from 'styled-components';
+import { useCityStore } from '../store/city';
 
 const FullWidth = styled.div`
   height: 60vh;
@@ -33,21 +35,21 @@ const SwitchForecast = styled.div`
 export const Content = ({ children }: { children: ReactNode }) => {
   const { pathname } = useLocation();
   const isFiveDay = pathname === routePaths.FiveDay;
+  const city = useCityStore((state) => state.currentCity);
   return (
     <FullWidth>
       <div>{children}</div>
-      <SwitchForecast>
-        <p>Forecast</p>
-        <Link to={routePaths.Home} className={`${isFiveDay ? "" : "active"}`}>
-          Now
-        </Link>
-        <Link
-          to={routePaths.FiveDay}
-          className={`${isFiveDay ? "active" : ""}`}
-        >
-          5 Days
-        </Link>
-      </SwitchForecast>
+      {city ? (
+        <SwitchForecast>
+          <p>Forecast</p>
+          <Link to={routePaths.Home} className={`${isFiveDay ? '' : 'active'}`}>
+            Now
+          </Link>
+          <Link to={routePaths.FiveDay} className={`${isFiveDay ? 'active' : ''}`}>
+            5 Days
+          </Link>
+        </SwitchForecast>
+      ) : null}
       <Settings />
     </FullWidth>
   );

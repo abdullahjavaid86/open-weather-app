@@ -1,5 +1,6 @@
-import { ReactNode, createContext, useContext, useMemo } from "react";
-import { useToggle } from "../hooks/useToggle";
+import { ReactNode, createContext, useContext, useMemo } from 'react';
+
+import { useToggle } from '../hooks/useToggle';
 
 export const SettingModalContext = createContext<{
   isOpen: boolean;
@@ -9,11 +10,7 @@ export const SettingModalContext = createContext<{
   toggle: () => {},
 });
 
-export const SettingModalContextProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+export const SettingModalContextProvider = ({ children }: { children: ReactNode }) => {
   const { status, toggle } = useToggle();
 
   const values = useMemo(
@@ -21,20 +18,16 @@ export const SettingModalContextProvider = ({
       isOpen: status,
       toggle,
     }),
-    [status]
+    [status, toggle],
   );
 
-  return (
-    <SettingModalContext.Provider value={values}>
-      {children}
-    </SettingModalContext.Provider>
-  );
+  return <SettingModalContext.Provider value={values}>{children}</SettingModalContext.Provider>;
 };
 
 export const useSettingsContext = () => {
   const value = useContext(SettingModalContext);
   if (value === null) {
-    throw new Error("ThemeChooser Context is missing");
+    throw new Error('ThemeChooser Context is missing');
   }
   return value;
 };

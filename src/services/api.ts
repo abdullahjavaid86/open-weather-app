@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const weatherApiInstance = axios.create({
   baseURL: import.meta.env.VITE_OPEN_WEATHER_ENDPOINT,

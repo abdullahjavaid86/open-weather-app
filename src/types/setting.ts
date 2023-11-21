@@ -1,4 +1,4 @@
-import { Time, Unit } from "./units";
+import { Time, Unit } from './units';
 
 export type TSettings = {
   unit: Unit;

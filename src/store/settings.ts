@@ -1,13 +1,14 @@
-import { create } from "zustand";
-import { TSettings } from "../types/setting";
-import { devtools, persist } from "zustand/middleware";
+import { devtools, persist } from 'zustand/middleware';
+
+import { TSettings } from '../types/setting';
+import { create } from 'zustand';
 
 export const useSettingsStore = create<TSettings>()(
   devtools(
     persist(
       (set) => ({
-        unit: "standard",
-        time: "24h",
+        unit: 'standard',
+        time: '24h',
         setTime(time) {
           set(() => ({ time }));
         },
@@ -15,7 +16,7 @@ export const useSettingsStore = create<TSettings>()(
           set(() => ({ unit }));
         },
       }),
-      { name: "settings" }
-    )
-  )
+      { name: 'settings' },
+    ),
+  ),
 );

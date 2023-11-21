@@ -1,15 +1,7 @@
 // 20200512123825
 // https://samples.openweathermap.org/data/2.5/forecast?q=M%C3%BCnchen,DE&appid=439d4b804bc8187953eb36d2a8c26a02
 
-import {
-  Time,
-  Main,
-  Weather,
-  Clouds,
-  Wind,
-  ForecastPrecipitation,
-  City,
-} from "./weather";
+import { City, Clouds, ForecastPrecipitation, Main, Time, Weather, Wind } from './weather';
 
 export interface ThreeHourResponse {
   cod: string;
@@ -34,5 +26,5 @@ export interface Forecast {
 }
 
 export interface ForecastSys {
-  pod: "d" | "n"; // Part of the day (d = day, n = night)
+  pod: 'd' | 'n'; // Part of the day (d = day, n = night)
 }

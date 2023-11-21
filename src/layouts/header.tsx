@@ -1,12 +1,13 @@
-import styled from "styled-components";
-import { useThemeChooser } from "../contexts/theme-chooser";
-import { userCurrentTime } from "../hooks/useCurrentTime";
-import { useSettingsContext } from "../contexts/setting-context";
-import { ChangeEvent, useState } from "react";
-import { cities } from "../constants/cities";
-import { useCityStore } from "../store/city";
+import { ChangeEvent, useState } from 'react';
 
-export const StyledHeaderDiv = styled.div`
+import { cities } from '../constants/cities';
+import styled from 'styled-components';
+import { useCityStore } from '../store/city';
+import { useCurrentTime } from '../hooks/useCurrentTime';
+import { useSettingsContext } from '../contexts/setting-context';
+import { useThemeChooser } from '../contexts/theme-chooser';
+
+const StyledHeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,11 +22,19 @@ export const StyledHeaderDiv = styled.div`
   }
 `;
 
+const SimpleButton = styled.button`
+  background: transparent;
+  border: none;
+  color: ${({ theme }) => theme.text};
+  font-weight: 700;
+  font-size: 16px;
+`;
+
 export const Header = () => {
   const { toggle } = useThemeChooser();
   const { toggle: openCloseModal } = useSettingsContext();
   const [search, setSearch] = useState(false);
-  const time = userCurrentTime();
+  const time = useCurrentTime();
   const setCity = useCityStore((state) => state.setCity);
 
   const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,20 +43,22 @@ export const Header = () => {
       return;
     }
     const city = cities.find((item) => item.name === value);
-    console.log(city);
 
     if (city) {
       setCity(city);
     }
   };
 
+  const onFocus = () => {
+    setSearch(true);
+  };
   return (
     <header>
       <StyledHeaderDiv>
         <div>{time}</div>
         <div>
           <ul className="settings">
-            <li onMouseOver={() => setSearch(true)}>
+            <li onFocus={onFocus} onMouseOver={onFocus}>
               {search ? (
                 <>
                   <input type="text" list="data" onChange={onSearch} />
@@ -58,12 +69,18 @@ export const Header = () => {
                   </datalist>
                 </>
               ) : (
-                "search"
+                'search'
               )}
             </li>
-            <li onClick={openCloseModal}>settings</li>
             <li>
-              <button onClick={toggle}>Toggle Dark Mode</button>
+              <SimpleButton type="button" onClick={openCloseModal}>
+                settings
+              </SimpleButton>
+            </li>
+            <li>
+              <button type="button" onClick={toggle}>
+                Toggle Dark Mode
+              </button>
             </li>
           </ul>
         </div>

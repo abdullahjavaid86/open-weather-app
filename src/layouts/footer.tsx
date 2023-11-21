@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { TCity } from "../constants/cities";
-import { getRandomCities } from "../utils/get-random-cities";
-import { useCityStore } from "../store/city";
-import { useMemo } from "react";
+import { TCity } from '../constants/cities';
+import { getRandomCities } from '../utils/get-random-cities';
+import styled from 'styled-components';
+import { useCityStore } from '../store/city';
+import { useMemo } from 'react';
 
 export const Footer = () => {
   const cities = useMemo(() => getRandomCities(), []);
@@ -39,10 +39,7 @@ const StyledWeatherButton = styled.button`
 const CityChooseButton = ({ city }: { city: TCity }) => {
   const { currentCity, setCity } = useCityStore((state) => state);
   return (
-    <StyledWeatherButton
-      onClick={() => setCity(city)}
-      className={`${currentCity?.name === city.name ? "active" : ""}`}
-    >
+    <StyledWeatherButton onClick={() => setCity(city)} className={`${currentCity?.name === city.name ? 'active' : ''}`}>
       {city.name}
     </StyledWeatherButton>
   );

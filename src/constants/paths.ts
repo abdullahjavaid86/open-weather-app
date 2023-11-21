@@ -1,4 +1,4 @@
 export const routePaths = {
-  Home: "/",
-  FiveDay: "/5days",
+  Home: '/',
+  FiveDay: '/5days',
 };

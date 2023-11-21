@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import { useSettingsContext } from "../contexts/setting-context";
-import { ModalComponent } from "./shared/modal";
-import { useSettingsStore } from "../store/settings";
-import { useState } from "react";
+import { ModalComponent } from './shared/modal';
+import styled from 'styled-components';
+import { useCurrentTime } from '../hooks/useCurrentTime';
+import { useSettingsContext } from '../contexts/setting-context';
+import { useSettingsStore } from '../store/settings';
+import { useState } from 'react';
 
 const Button = styled.button`
   background: transparent;
@@ -26,6 +27,7 @@ export const Settings = () => {
   const { unit, time, setTime, setUnits } = useSettingsStore();
   const [currentUnit, setCurrentUnit] = useState(unit);
   const [currentTime, setCurrentTime] = useState(time);
+  const curTime = useCurrentTime();
 
   const onSave = () => {
     setTime(currentTime);
@@ -40,8 +42,8 @@ export const Settings = () => {
     <ModalComponent isOpen={isOpen} toggle={toggle}>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <h3>Settings</h3>
@@ -49,20 +51,17 @@ export const Settings = () => {
           <p>Units</p>
           <div>
             <Button
-              onClick={() => setCurrentUnit("imperial")}
-              className={`${currentUnit === "imperial" ? "active" : ""}`}
+              onClick={() => setCurrentUnit('imperial')}
+              className={`${currentUnit === 'imperial' ? 'active' : ''}`}
             >
               Imperial
             </Button>
-            <Button
-              onClick={() => setCurrentUnit("metric")}
-              className={`${currentUnit === "metric" ? "active" : ""}`}
-            >
+            <Button onClick={() => setCurrentUnit('metric')} className={`${currentUnit === 'metric' ? 'active' : ''}`}>
               Metric
             </Button>
             <Button
-              onClick={() => setCurrentUnit("standard")}
-              className={`${currentUnit === "standard" ? "active" : ""}`}
+              onClick={() => setCurrentUnit('standard')}
+              className={`${currentUnit === 'standard' ? 'active' : ''}`}
             >
               Standard
             </Button>
@@ -71,27 +70,28 @@ export const Settings = () => {
         <div>
           <p>Time</p>
           <div>
-            <Button
-              onClick={() => setCurrentTime("12h")}
-              className={`${currentTime === "12h" ? "active" : ""}`}
-            >
+            <Button onClick={() => setCurrentTime('12h')} className={`${currentTime === '12h' ? 'active' : ''}`}>
               AM/PM
             </Button>
-            <Button
-              onClick={() => setCurrentTime("24h")}
-              className={`${currentTime === "24h" ? "active" : ""}`}
-            >
+            <Button onClick={() => setCurrentTime('24h')} className={`${currentTime === '24h' ? 'active' : ''}`}>
               24h
             </Button>
           </div>
         </div>
         <div
           style={{
-            marginTop: "1rem",
+            marginTop: '1rem',
           }}
         >
           <Button onClick={onCancel}>Cancel</Button>
           <Button onClick={onSave}>Save</Button>
+        </div>
+        <div
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          <p>{curTime}</p>
         </div>
       </div>
     </ModalComponent>

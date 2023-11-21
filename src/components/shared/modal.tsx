@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import Modal from "styled-react-modal";
+import React, { useState } from 'react';
+
+import Modal from 'styled-react-modal';
 
 const StyledModal = Modal.styled`
   width: 20rem;
@@ -7,10 +8,10 @@ const StyledModal = Modal.styled`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }: { theme: any }) => theme.background};
-  border: 1px solid ${({ theme }: { theme: any }) => theme.colors.blue};
+  background-color: ${({ theme }: { theme: { background: string } }) => theme.background};
+  border: 1px solid ${({ theme }: { theme: { colors: { blue: string } } }) => theme.colors.blue};
   border-radius: 6px;
-  opacity: ${(props: any) => props.opacity};
+  opacity: ${(props: { opacity: number }) => props.opacity};
   transition : all 0.3s ease-in-out;
   overflow: "auto"`;
 
@@ -19,9 +20,9 @@ export function ModalComponent({
   toggle,
   children,
 }: {
-  isOpen: boolean;
-  toggle: () => void;
-  children: React.ReactNode;
+  readonly isOpen: boolean;
+  readonly toggle: () => void;
+  readonly children: React.ReactNode;
 }) {
   const [opacity, setOpacity] = useState(0);
 

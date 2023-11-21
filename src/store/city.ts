@@ -1,6 +1,7 @@
-import { create } from "zustand";
-import { CITY_CONTEXT } from "../types/city";
-import { devtools, persist } from "zustand/middleware";
+import { devtools, persist } from 'zustand/middleware';
+
+import { CITY_CONTEXT } from '../types/city';
+import { create } from 'zustand';
 
 export const useCityStore = create<CITY_CONTEXT>()(
   devtools(
@@ -11,7 +12,7 @@ export const useCityStore = create<CITY_CONTEXT>()(
           set(() => ({ currentCity: city }));
         },
       }),
-      { name: "city" }
-    )
-  )
+      { name: 'city' },
+    ),
+  ),
 );

@@ -1,6 +1,6 @@
-import { CountryCode } from "./country-codes";
-import { Coordinate } from "./units";
-import { WeatherCondition } from "./weather-condition";
+import { Coordinate } from './units';
+import { CountryCode } from './country-codes';
+import { WeatherCondition } from './weather-condition';
 
 export interface Weather {
   id: WeatherCondition;
@@ -10,7 +10,7 @@ export interface Weather {
 }
 
 // Internal Value for the API, its not 100% clear what value this could be. 2 Definitive values are 'stations' and 'cities' rn
-export type Base = "stations" | "cities" | string;
+export type Base = 'stations' | 'cities' | string;
 
 export interface Main {
   temp: number;
@@ -36,11 +36,11 @@ export interface Clouds {
 }
 
 export interface ForecastPrecipitation {
-  "3h": number; // Rain volume for the last 3 hours, mm
+  '3h': number; // Rain volume for the last 3 hours, mm
 }
 
 export interface Precipitation extends ForecastPrecipitation {
-  "1h"?: number; // Rain volume for the last 1 hour, mm
+  '1h'?: number; // Rain volume for the last 1 hour, mm
 }
 
 // Time of data calculation, unix, UTC#
