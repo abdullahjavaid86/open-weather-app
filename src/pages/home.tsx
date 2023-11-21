@@ -1,5 +1,6 @@
+import { Loader } from '../components/shared/loader';
+import { WeatherImage } from '../components/weather-icon';
 import { convertNumberTimeStampInHoursAndMinutes } from '../utils/time';
-import { getWeatherIconUrl } from '../utils/weather';
 import styled from 'styled-components';
 import { useCityStore } from '../store/city';
 import { useCurrentWeather } from '../hooks/useCurrentWeather';
@@ -33,7 +34,7 @@ export const Home = () => {
   if (isLoading) {
     return (
       <StyledWeatherDataDiv>
-        <div>Loading...</div>
+        <Loader />
       </StyledWeatherDataDiv>
     );
   }
@@ -59,9 +60,7 @@ export const Home = () => {
       <div>{data?.data.name}</div>
       <StyledWeatherDataDiv>
         <div style={{ display: 'grid', textAlign: 'center' }}>
-          {data?.data?.weather?.map((item) => (
-            <img src={getWeatherIconUrl(item.icon)} alt={item.description} key={item.id} />
-          ))}
+          {data?.data?.weather?.map((item) => <WeatherImage weather={item} key={item.id} />)}
           {data.data.weather[0].main}
         </div>
         <div>

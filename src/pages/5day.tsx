@@ -3,6 +3,15 @@ import { getWeatherIconUrl } from '../utils/weather';
 import { useCityStore } from '../store/city';
 import { useFiveDaysForecast } from '../hooks/useFiveDaysForecast';
 import { useTemperatureUnit } from '../hooks/useTemperatureUnit';
+import { Loader } from '../components/shared/loader';
+import styled from 'styled-components';
+import { WeatherImage } from '../components/weather-icon';
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const FiveDay = () => {
   const city = useCityStore((state) => state.currentCity);
@@ -12,33 +21,33 @@ export const FiveDay = () => {
 
   if (!city) {
     return (
-      <div>
+      <StyledDiv>
         <div>Pick a city to see full forecast</div>
-      </div>
+      </StyledDiv>
     );
   }
 
   if (isLoading) {
     return (
-      <div>
-        <div>Loading...</div>
-      </div>
+      <StyledDiv>
+        <Loader />
+      </StyledDiv>
     );
   }
 
   if (status === 'error') {
     return (
-      <div>
+      <StyledDiv>
         <div>{(error as { message: string }).message}</div>
-      </div>
+      </StyledDiv>
     );
   }
 
   if (!data?.data) {
     return (
-      <div>
+      <StyledDiv>
         <div>Please select another city</div>
-      </div>
+      </StyledDiv>
     );
   }
 
@@ -70,7 +79,7 @@ export const FiveDay = () => {
               <div key={item.dt_txt}>
                 <div>{getShortDayFromTimeStamp(item.dt_txt)}</div>
                 <div>
-                  <img src={getWeatherIconUrl(item.weather[0].icon)} alt={item.weather[0].description} />
+                  <WeatherImage weather={item.weather[0]} />
                 </div>
                 <div>
                   <p>{item.weather[0].main}</p>
