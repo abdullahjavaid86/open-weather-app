@@ -10,6 +10,9 @@ Run `cp .env.example .env` and set open api key in `.env`
 In the project directory, you can run:
 `yarn dev`
 
+In the project directory, you can run the following command to run test cases:
+`yarn test`
+
 Runs the app in the development mode.
 Open `http://localhost:5173` to view it in the browser.
 

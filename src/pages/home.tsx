@@ -65,24 +65,30 @@ export const Home = () => {
         </div>
         <div>
           <p>
-            <span>Temp: </span> {data?.data?.main?.temp}
-            {temperatureUnit}
+            <span>Temp: </span>
+            <span data-testId="temprature">
+              {data?.data?.main?.temp} {temperatureUnit}
+            </span>
           </p>
           <p>
-            <span>Feels like: </span> {data.data.main.feels_like}
-            {temperatureUnit}
+            <span>Feels like: </span>
+            <span data-testId="feels-like">
+              {data.data.main.feels_like} {temperatureUnit}
+            </span>
           </p>
           <p>
-            <span>Humidity: </span> {data.data.main.humidity}
-            {temperatureUnit}
+            <span>Humidity: </span>
+            <span data-testId="humidity">
+              {data.data.main.humidity} {temperatureUnit}
+            </span>
           </p>
           <p>
             <span>Sunrise: </span>
-            {convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunrise) ?? 'N/A'}
+            <span data-testId="surise">{convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunrise) ?? 'N/A'}</span>
           </p>
           <p>
             <span>Sunset: </span>
-            {convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunset) ?? 'N/A'}
+            <span data-testId="sunset">{convertNumberTimeStampInHoursAndMinutes(data.data.sys.sunset) ?? 'N/A'}</span>
           </p>
         </div>
       </StyledWeatherDataDiv>

@@ -9,8 +9,8 @@ export const Footer = () => {
   return (
     <footer>
       <div>
-        {cities.map((item) => (
-          <CityChooseButton key={item.id} city={item} />
+        {cities.map((item, index) => (
+          <CityChooseButton key={item.id} cityIndex={index} city={item} />
         ))}
       </div>
     </footer>
@@ -37,10 +37,15 @@ const StyledWeatherButton = styled.button`
   }
 `;
 
-const CityChooseButton = ({ city }: { city: TCity }) => {
+const CityChooseButton = ({ city, cityIndex }: { city: TCity; cityIndex: number }) => {
   const { currentCity, setCity } = useCityStore((state) => state);
+
   return (
-    <StyledWeatherButton onClick={() => setCity(city)} className={`${currentCity?.name === city.name ? 'active' : ''}`}>
+    <StyledWeatherButton
+      data-testid={`city-${cityIndex}`}
+      onClick={() => setCity(city)}
+      className={`${currentCity?.name === city.name ? 'active' : ''}`}
+    >
       {city.name}
     </StyledWeatherButton>
   );
