@@ -8,6 +8,7 @@ import { useState } from 'react';
 const Button = styled.button`
   background: transparent;
   border-radius: 4px;
+  padding: 3px 15px;
   border: 1px solid ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.text};
   margin: 0.2rem;
@@ -22,12 +23,15 @@ const Button = styled.button`
   }
 `;
 
+const TIME_FORMAT_12H = '12h';
+const TIME_FORMAT_24H = '24h';
+
 export const Settings = () => {
   const { isOpen, toggle } = useSettingsContext();
   const { unit, time, setTime, setUnits } = useSettingsStore();
   const [currentUnit, setCurrentUnit] = useState(unit);
   const [currentTime, setCurrentTime] = useState(time);
-  const curTime = useCurrentTime();
+  const [curTime, setCurTime] = useState(useCurrentTime());
 
   const onSave = () => {
     setTime(currentTime);
@@ -36,14 +40,38 @@ export const Settings = () => {
   };
 
   const onCancel = () => {
+    setCurrentUnit(unit);
+    setCurrentTime(time);
+    setCurTime(
+      new Date().toLocaleString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: time === '12h',
+      }),
+    );
+
     toggle();
   };
+
+  const updateTimeFormat = (format) => {
+    setCurrentTime(format);
+    setCurTime(
+      new Date().toLocaleString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: format === TIME_FORMAT_12H,
+      }),
+    );
+  };
+
   return (
     <ModalComponent isOpen={isOpen} toggle={toggle}>
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
         }}
       >
         <h3>Settings</h3>
@@ -70,10 +98,16 @@ export const Settings = () => {
         <div>
           <p>Time</p>
           <div>
-            <Button onClick={() => setCurrentTime('12h')} className={`${currentTime === '12h' ? 'active' : ''}`}>
+            <Button 
+              onClick={() => updateTimeFormat(TIME_FORMAT_12H)}
+              className={`${currentTime === TIME_FORMAT_12H ? 'active' : ''}`}
+            >
               AM/PM
             </Button>
-            <Button onClick={() => setCurrentTime('24h')} className={`${currentTime === '24h' ? 'active' : ''}`}>
+            <Button
+              onClick={() => updateTimeFormat(TIME_FORMAT_24H)}
+              className={`${currentTime === TIME_FORMAT_24H ? 'active' : ''}`}
+            >
               24h
             </Button>
           </div>

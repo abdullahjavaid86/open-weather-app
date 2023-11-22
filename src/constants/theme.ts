@@ -5,8 +5,9 @@ export const lightTheme = {
   text: colors.black,
   toggleBorder: colors.white,
   background: colors.white,
-  btnBackgroundColor: colors.black,
+  btnBackgroundColor: colors.blue,
   btnTextColor: colors.white,
+  hoverBtnTextColor: colors.white,
   colors: {
     black: '#000',
     white: '#fff',
@@ -24,6 +25,7 @@ export const darkTheme = {
   background: colors.black,
   btnBackgroundColor: colors.white,
   btnTextColor: colors.black,
+  hoverBtnTextColor: colors.blue,
   colors: {
     black: '#000',
     white: '#fff',

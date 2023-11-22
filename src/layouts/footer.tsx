@@ -25,6 +25,7 @@ const StyledWeatherButton = styled.button`
   color: ${({ theme }) => theme.text};
   margin: 0.2rem;
   width: 16%;
+  font-weight: bold;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -32,7 +33,7 @@ const StyledWeatherButton = styled.button`
   &.active {
     cursor: pointer;
     background: ${({ theme }) => theme.btnBackgroundColor};
-    color: ${({ theme }) => theme.btnTextColor};
+    color: ${({ theme }) => theme.hoverBtnTextColor};
   }
 `;
 

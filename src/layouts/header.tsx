@@ -30,6 +30,7 @@ const SimpleButton = styled.button`
   color: ${({ theme }) => theme.text};
   font-weight: 700;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 export const Header = () => {

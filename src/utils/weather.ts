@@ -32,7 +32,7 @@ export const getWeatherIconFromAssets = (weather: Weather, getFromOpenWeather = 
       return WeatherFog;
     case 'freezing rain':
       return WeatherHail;
-    case 'thunderstorm with rain':
+    case 'light rain':
       return WeatherLightningRainy;
     case 'thunderstorm':
       return WeatherLightning;
@@ -41,6 +41,8 @@ export const getWeatherIconFromAssets = (weather: Weather, getFromOpenWeather = 
     case 'rain':
       return WeatherPouring;
     case 'drizzle':
+      return WeatherPouring;
+    case 'light intensity drizzle':
       return WeatherPouring;
     case 'heavy snow':
       return WeatherSnowHeavy;

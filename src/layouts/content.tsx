@@ -25,7 +25,7 @@ const SwitchForecast = styled.div`
   & a.active {
     cursor: pointer;
     background: ${({ theme }) => theme.btnBackgroundColor};
-    color: ${({ theme }) => theme.btnTextColor};
+    color: ${({ theme }) => theme.hoverBtnTextColor};
   }
   & a:nth-child(even) {
     margin-right: 1rem;

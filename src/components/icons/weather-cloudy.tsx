@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledSvg = styled.svg`
-  fill: ${({ theme }) => theme.text};
+  fill: ${({ theme }) => theme.colors.blue};
 `;
 
 export const WeatherCloudy = () => {

@@ -1,5 +1,4 @@
 import { getShortDayFromTimeStamp } from '../utils/time';
-import { getWeatherIconUrl } from '../utils/weather';
 import { useCityStore } from '../store/city';
 import { useFiveDaysForecast } from '../hooks/useFiveDaysForecast';
 import { useTemperatureUnit } from '../hooks/useTemperatureUnit';
@@ -60,21 +59,23 @@ export const FiveDay = () => {
       <p>{data?.data?.city?.name}</p>
       <div
         style={{
-          width: '70%',
+          width: 'auto',
           overflowY: 'auto',
           margin: '0 auto',
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
         <div
           className="list"
           style={{
             display: 'flex',
-            gap: '5rem',
+            gap: '1rem',
             textAlign: 'center',
             width: 'max-content',
           }}
         >
-          {data?.data?.list?.map((item) => {
+          {data?.data?.list?.slice(0, 5).map((item) => {
             return (
               <div key={item.dt_txt}>
                 <div>{getShortDayFromTimeStamp(item.dt_txt)}</div>

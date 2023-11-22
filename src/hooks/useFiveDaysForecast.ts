@@ -18,10 +18,21 @@ export const useFiveDaysForecast = () => {
     refetch();
   }, [unit, city?.name, refetch]);
 
+  const uniqueDataList = data?.data?.list?.filter((item, index, array) => {
+    const date = new Date(item.dt_txt);
+    return index === array.findIndex((obj) => new Date(obj.dt_txt).toDateString() === date.toDateString());
+  });
+
   return {
     isLoading,
     status,
     error,
-    data,
+    data: {
+      ...data,
+      data: {
+        ...data?.data,
+        list: uniqueDataList,
+      },
+    },
   };
 };
