@@ -14,18 +14,6 @@ export const useCurrentWeather = () => {
     { enabled: city !== null, refetchInterval: 2000 },
   );
 
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('test', city);
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-
   useEffect(() => {
     refetch();
   }, [unit, city?.name, refetch]);

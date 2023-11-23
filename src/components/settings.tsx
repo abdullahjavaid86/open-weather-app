@@ -31,7 +31,7 @@ export const Settings = () => {
   const { unit, time, setTime, setUnits } = useSettingsStore();
   const [currentUnit, setCurrentUnit] = useState(unit);
   const [currentTime, setCurrentTime] = useState(time);
-  const [curTime, setCurTime] = useState(useCurrentTime());
+  const curTime = useCurrentTime();
 
   const onSave = () => {
     setTime(currentTime);
@@ -42,26 +42,7 @@ export const Settings = () => {
   const onCancel = () => {
     setCurrentUnit(unit);
     setCurrentTime(time);
-    setCurTime(
-      new Date().toLocaleString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: time === '12h',
-      }),
-    );
-
     toggle();
-  };
-
-  const updateTimeFormat = (format) => {
-    setCurrentTime(format);
-    setCurTime(
-      new Date().toLocaleString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: format === TIME_FORMAT_12H,
-      }),
-    );
   };
 
   return (
@@ -98,14 +79,14 @@ export const Settings = () => {
         <div>
           <p>Time</p>
           <div>
-            <Button 
-              onClick={() => updateTimeFormat(TIME_FORMAT_12H)}
+            <Button
+              onClick={() => setCurrentTime(TIME_FORMAT_12H)}
               className={`${currentTime === TIME_FORMAT_12H ? 'active' : ''}`}
             >
               AM/PM
             </Button>
             <Button
-              onClick={() => updateTimeFormat(TIME_FORMAT_24H)}
+              onClick={() => setCurrentTime(TIME_FORMAT_24H)}
               className={`${currentTime === TIME_FORMAT_24H ? 'active' : ''}`}
             >
               24h
